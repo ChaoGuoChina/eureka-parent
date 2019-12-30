@@ -1,0 +1,29 @@
+server:
+  port: 8766
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: eureka-client-zuul
+  zipkin:
+    base-url: http://localhost:8768
+  sleuth:
+    sampler:
+      percentage: 1.0
+zuul:
+  routes:
+    ribbonapi:
+      path: /ribbonapi/**
+      serviceId: eureka-client-ribbon
+    feignapi:
+      path: /feignapi/**
+      serviceId: eureka-client-feign
+    serveroneapi:
+      path: /serveroneapi/**
+      serviceId: eureka-client-one
+    servertwoapi:
+      path: /servertwoapi/**
+      serviceId: eureka-client-two
+  prefix: /v1

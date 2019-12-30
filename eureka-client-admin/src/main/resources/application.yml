@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+spring:
+  application:
+    name: eureka-client-admin
+  boot:
+    admin:
+      routes:
+        endpoints: env,metrics,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix,stream
+      turbine:
+        clusters: default
+        location: eureka-client-turbine
+management:
+  security:
+    enabled: false
+logging:
+  file: "logs/eureka-client-admin.log"
